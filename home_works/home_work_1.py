@@ -49,3 +49,7 @@ names = [
     ["Кошовский", "Тимур", 35],
     ["Шинкарева", "Галина", 21],
 ]
+
+print('{:<7} {:<15}  {:<15}  {:<10}'.format("Номер:", "Фамилия:", "Имя:", "Возраст:"))
+for num, (surname, name, age) in enumerate(names):
+    print('{:<7} {:<15}  {:<15}  {:<10}'.format(num, surname, name, age))
