@@ -50,6 +50,17 @@ names = [
     ["Шинкарева", "Галина", 21],
 ]
 
+# 2.
 print('{:<7} {:<15}  {:<15}  {:<10}'.format("Номер:", "Фамилия:", "Имя:", "Возраст:"))
 for num, (surname, name, age) in enumerate(names):
     print('{:<7} {:<15}  {:<15}  {:<10}'.format(num, surname, name, age))
+
+# 3.
+
+length = 15
+students_with_long_name = 0
+for surname, name, age in names:
+    if len(surname) + len(name) > length:
+        students_with_long_name += 1
+
+print("\nКоличество студентов с именем и фамилией длиннее {} символов - {}".format(length, students_with_long_name))
