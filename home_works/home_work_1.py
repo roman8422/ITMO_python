@@ -74,6 +74,11 @@ for surname, name, age in names:
 girls = list(set(girls))
 girls.sort(reverse=True)
 
+# 5.
+filename = "girls.txt"
+f = open(filename, 'w')
+
 print("\nСтуденты девушки:")
 for girl in girls:
     print(girl)
+    f.write("{}\n".format(girl))
