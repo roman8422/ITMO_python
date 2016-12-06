@@ -6,7 +6,6 @@
 # *6. В конце файла добавить сумму всех гласных букв этого списка
 
 # 1
-
 names = [
     ["Быкова", "Анна", 35],
     ["Лещенко", "Валентина", 29],
@@ -52,13 +51,11 @@ names = [
 ]
 
 # 2.
-
 print('{:<7} {:<15}  {:<15}  {:<10}'.format("Номер:", "Фамилия:", "Имя:", "Возраст:"))
 for num, (surname, name, age) in enumerate(names):
     print('{:<7} {:<15}  {:<15}  {:<10}'.format(num, surname, name, age))
 
 # 3.
-
 length = 15
 students_with_long_name = 0
 for surname, name, age in names:
@@ -75,7 +72,8 @@ for surname, name, age in names:
         girls.append(name)
 
 girls = list(set(girls))
+girls.sort(reverse=True)
 
 print("\nСтуденты девушки:")
-for girl in sorted(girls, reverse=True):
+for girl in girls:
     print(girl)
