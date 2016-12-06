@@ -78,7 +78,17 @@ girls.sort(reverse=True)
 filename = "girls.txt"
 f = open(filename, 'w')
 
+vowels = "аеёиоуыэюя"
+vowels_num = 0
+
 print("\nСтуденты девушки:")
 for girl in girls:
     print(girl)
     f.write("{}\n".format(girl))
+
+    # 6.
+    for letter in girl:
+        if letter in vowels:
+            vowels_num += 1
+
+f.write("\nКоличество гласных в этом списке имен - {}\n".format(vowels_num))
