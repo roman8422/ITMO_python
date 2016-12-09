@@ -16,22 +16,32 @@ import sys
 # 1
 
 def get_student():
+    global students
     name = input("Введите имя: ")
     last_name = input("Введите фамилию: ")
     age = input("Введите возраст: ")
-    print(name, last_name, age)
+    students.append([name, last_name, int(age)])
 
 menu = """
 Select option:
 q - quid
 a - add student
 """
+
+students = []
+filename = 'students.txt'
+file = open(filename, 'w')
+
+# 2
+
 while True:
     option = input(menu)
 
-    print(option)
     if option.lower() == "q":
         print("Quiting")
+        for (name, last_name, age) in students:
+            # 3
+            file.write("{last_name} {name} {age}\n".format(name = name, last_name = last_name, age = age))
         sys.exit(0)
     elif option.lower() == "a":
         get_student()
