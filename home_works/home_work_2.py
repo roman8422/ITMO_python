@@ -10,3 +10,12 @@
 # Время запуска пишем в log.txt
 
 # 6**. Удаление конкретного пользователя.
+
+# 1
+
+def get_student():
+    name = input("Введите имя: ")
+    last_name = input("Введите фамилию: ")
+    age = input("Введите возраст: ")
+    print(name, last_name, age)
+
