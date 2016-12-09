@@ -44,7 +44,6 @@ if os.path.isfile(filename):
     for line in open(filename, 'r'):
         students.append(line.strip().split())
 
-wfile = open(filename, 'w')
 
 # 2
 
@@ -53,6 +52,7 @@ while True:
 
     if option.lower() == "q":
         print("Quiting")
+        wfile = open(filename, 'w')
         for (name, last_name, age) in students:
             # 3
             wfile.write("{last_name} {name} {age}\n".format(name = name, last_name = last_name, age = age))
