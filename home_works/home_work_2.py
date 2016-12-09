@@ -21,15 +21,19 @@ def get_student():
     age = input("Введите возраст: ")
     print(name, last_name, age)
 
-option = input("""
+menu = """
 Select option:
 q - quid
 a - add student
-""")
+"""
+while True:
+    option = input(menu)
 
-print(option)
-if option.lower() == "q":
-    print("Quiting")
-    sys.exit(0)
-elif option.lower() == "a":
-    get_student()
+    print(option)
+    if option.lower() == "q":
+        print("Quiting")
+        sys.exit(0)
+    elif option.lower() == "a":
+        get_student()
+    else:
+        print("\nWrong option selected. Tru again.")
