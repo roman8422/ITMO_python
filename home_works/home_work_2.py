@@ -38,6 +38,26 @@ def del_student():
     removed = students.pop(index)
     print("Student {} {} was removed.\n".format(removed[1], removed[0]))
 
+def menu_function(option=None):
+    if not option:
+        option = input(menu)
+
+    if option.lower() == "q":
+        print("Quiting")
+        wfile = open(filename, 'w')
+        for (name, last_name, age) in students:
+            # 3
+            wfile.write("{last_name} {name} {age}\n".format(name = name, last_name = last_name, age = age))
+        sys.exit(0)
+    elif option.lower() == "a":
+        get_student()
+    elif option.lower() == "d":
+        del_student()
+    elif option.lower() == "p":
+        print_students()
+    else:
+        print("\nWrong option selected. Tru again.")
+
 log()
 
 menu = """
@@ -60,20 +80,4 @@ if os.path.isfile(filename):
 # 2
 
 while True:
-    option = input(menu)
-
-    if option.lower() == "q":
-        print("Quiting")
-        wfile = open(filename, 'w')
-        for (name, last_name, age) in students:
-            # 3
-            wfile.write("{last_name} {name} {age}\n".format(name = name, last_name = last_name, age = age))
-        sys.exit(0)
-    elif option.lower() == "a":
-        get_student()
-    elif option.lower() == "d":
-        del_student()
-    elif option.lower() == "p":
-        print_students()
-    else:
-        print("\nWrong option selected. Tru again.")
+    menu_function()
