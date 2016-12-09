@@ -11,9 +11,14 @@
 
 # 6**. Удаление конкретного пользователя.
 
-import sys, os
+import sys, os, datetime
 
 # 1
+
+def log():
+    curtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    logfile = open('log.txt', 'a')
+    logfile.write(curtime + '\n')
 
 def get_student():
     global students
@@ -21,6 +26,8 @@ def get_student():
     last_name = input("Введите фамилию: ")
     age = input("Введите возраст: ")
     students.append([name, last_name, int(age)])
+
+log()
 
 menu = """
 Select option:
