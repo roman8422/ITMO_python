@@ -27,12 +27,18 @@ def get_student():
     age = input("Введите возраст: ")
     students.append([name, last_name, int(age)])
 
+def print_students():
+    print()
+    for num, (name, last_name, age) in enumerate(students):
+        print("{num}. {last_name} {name}".format(name=name, last_name = last_name, num = num))
+
 log()
 
 menu = """
 Select option:
 q - quid
 a - add student
+p - print list of all students
 """
 
 students = []
@@ -59,5 +65,7 @@ while True:
         sys.exit(0)
     elif option.lower() == "a":
         get_student()
+    elif option.lower() == "p":
+        print_students()
     else:
         print("\nWrong option selected. Tru again.")
