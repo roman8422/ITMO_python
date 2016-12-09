@@ -11,7 +11,7 @@
 
 # 6**. Удаление конкретного пользователя.
 
-import sys
+import sys, os
 
 # 1
 
@@ -30,7 +30,14 @@ a - add student
 
 students = []
 filename = 'students.txt'
-file = open(filename, 'w')
+
+# 4.
+
+if os.path.isfile(filename):
+    for line in open(filename, 'r'):
+        students.append(line.strip().split())
+
+wfile = open(filename, 'w')
 
 # 2
 
@@ -41,7 +48,7 @@ while True:
         print("Quiting")
         for (name, last_name, age) in students:
             # 3
-            file.write("{last_name} {name} {age}\n".format(name = name, last_name = last_name, age = age))
+            wfile.write("{last_name} {name} {age}\n".format(name = name, last_name = last_name, age = age))
         sys.exit(0)
     elif option.lower() == "a":
         get_student()
