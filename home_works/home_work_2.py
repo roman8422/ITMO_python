@@ -11,6 +11,8 @@
 
 # 6**. Удаление конкретного пользователя.
 
+import sys
+
 # 1
 
 def get_student():
@@ -19,3 +21,15 @@ def get_student():
     age = input("Введите возраст: ")
     print(name, last_name, age)
 
+option = input("""
+Select option:
+q - quid
+a - add student
+""")
+
+print(option)
+if option.lower() == "q":
+    print("Quiting")
+    sys.exit(0)
+elif option.lower() == "a":
+    get_student()
