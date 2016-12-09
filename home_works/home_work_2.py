@@ -32,12 +32,19 @@ def print_students():
     for num, (name, last_name, age) in enumerate(students):
         print("{num}. {last_name} {name}".format(name=name, last_name = last_name, num = num))
 
+def del_student():
+    global students
+    index = int(input("\nEnter number of student you want to delete\n"))
+    removed = students.pop(index)
+    print("Student {} {} was removed.\n".format(removed[1], removed[0]))
+
 log()
 
 menu = """
 Select option:
 q - quid
 a - add student
+d - delete student
 p - print list of all students
 """
 
@@ -49,7 +56,6 @@ filename = 'students.txt'
 if os.path.isfile(filename):
     for line in open(filename, 'r'):
         students.append(line.strip().split())
-
 
 # 2
 
@@ -65,6 +71,8 @@ while True:
         sys.exit(0)
     elif option.lower() == "a":
         get_student()
+    elif option.lower() == "d":
+        del_student()
     elif option.lower() == "p":
         print_students()
     else:
