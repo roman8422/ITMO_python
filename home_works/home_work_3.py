@@ -41,3 +41,11 @@ def is_year_leap(year):
         return False
 
 print(is_year_leap(1600))
+
+def square(size):
+    perimeter = size * 4
+    content = size ** 2
+    diagonal = ((size ** 2) * 2) ** (1/2)
+    return (perimeter, content, diagonal)
+
+print(square(5))
