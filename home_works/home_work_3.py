@@ -32,3 +32,12 @@ def arithmetic(n1, n2, op):
     else: return "Unknow operation"
 
 print(arithmetic(4.2, 2, "/"))
+
+def is_year_leap(year):
+    if (year % 4 == 0 and year % 100 != 0 ) \
+        or year % 400 == 0:
+        return True
+    else:
+        return False
+
+print(is_year_leap(1600))
