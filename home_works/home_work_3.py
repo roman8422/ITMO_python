@@ -31,6 +31,7 @@ def arithmetic(n1, n2, op):
         return n1 / n2
     else: return "Unknow operation"
 
+print("\nArithmetic")
 print(arithmetic(4.2, 2, "/"))
 
 def is_year_leap(year):
@@ -40,6 +41,7 @@ def is_year_leap(year):
     else:
         return False
 
+print("\nis_year_leap")
 print(is_year_leap(1600))
 
 def square(size):
@@ -59,7 +61,7 @@ def season(month):
            ]
     return seasons[(month) // 3 % 4]
 
-print()
+print("\nSeasons")
 for i in range(1,13):
     print(i, season(i))
 
