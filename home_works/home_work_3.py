@@ -49,3 +49,16 @@ def square(size):
     return (perimeter, content, diagonal)
 
 print(square(5))
+
+def season(month):
+    seasons = [
+        'Winter',
+        'Spring',
+        'Summer',
+        'Autumn',
+           ]
+    return seasons[(month) // 3 % 4]
+
+print()
+for i in range(1,13):
+    print(i, season(i))
