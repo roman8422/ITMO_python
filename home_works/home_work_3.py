@@ -62,3 +62,14 @@ def season(month):
 print()
 for i in range(1,13):
     print(i, season(i))
+
+def bank(a, years):
+    if years >= 1:
+        years -= 1
+        return bank(a + a * 0.1, years)
+    else:
+        return a
+
+print("\nBank")
+for i in range(5):
+    print(i,bank(10, i))
