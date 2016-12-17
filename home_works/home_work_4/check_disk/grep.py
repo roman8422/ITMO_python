@@ -19,7 +19,7 @@ def grep(dir, str, recursive=False, ignorecase=False):
 
 if __name__ == "__main__":
     print("\nTest of grep functino:")
-    dir = 'python3'
+    dir = '../python3'
 
     str = 'Pyt'
     print('\nstr =', str)

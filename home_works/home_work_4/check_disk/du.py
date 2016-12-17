@@ -16,7 +16,7 @@ def du(path, recursive=True):
 if __name__ == "__main__":
     print("Test of dir functino:")
     # to test dir python3 was copied from /usr/share/
-    dir = 'python3'
+    dir = '../python3'
     print("Dir {dir} size is - {size}".format(dir=dir, size=du(dir, recursive=False)))
     print()
     print("Dir {dir} size is - {size}".format(dir=dir, size=du(dir)))
