@@ -9,21 +9,21 @@
 
 import os
 
-def du(path):
-    size = 0
+def du(path, recursive=True):
+    size = 4096 # dir size itself
     paths_list = os.listdir(path)
     for subpath in paths_list:
         path_to_check = os.path.join(path, subpath)
-        if os.path.isfile(path_to_check):
-            size += os.path.getsize(path_to_check)
-            print(os.path.getsize(path_to_check), path_to_check)
+        if not os.path.isdir(path_to_check):
+            size += os.path.getsize((path_to_check))
+        elif os.path.isdir(path_to_check):
+            if recursive:
+                size += du(path_to_check, recursive=True)
+
     return size
 
-print(du("python3"))
-
-# Verification:
-# find python3/ -maxdepth 1 -type f  | xargs du -sb | awk 'BEGIN{sum=0};{sum+=$1;print $0};END{print sum}'
-# 2158    python3/python.mk
-# 324     python3/debian_defaults
-# 11203   python3/py3versions.py
-# 13685
+# to test dir python3 was copied from /usr/share/
+dir = 'python3'
+print("Dir {dir} size is - {size}".format(dir=dir, size=du(dir, recursive=False)))
+print()
+print("Dir {dir} size is - {size}".format(dir=dir, size=du(dir)))
