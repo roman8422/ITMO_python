@@ -1,0 +1,7 @@
+#! /bin/sh
+set -e
+
+if [ "$1" = rtupdate ]; then
+	py3clean -p awscli /usr/share/awscli
+	py3compile -p awscli -V 3.3- /usr/share/awscli
+fi
