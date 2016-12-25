@@ -23,8 +23,8 @@ class Car:
         return self.distance * self.price * self.price_units # количество мест
 
 class RailCar(Car): # грузовой вагон
-    price_units = 100
-    price = 1500
+    price_units = 68 # грузоподъемность вагона, тонн
+    price = 97 # цена провоза 1 тонны на 1 км
 
     def __init__(self, train):
         super().__init__(train)
@@ -32,8 +32,8 @@ class RailCar(Car): # грузовой вагон
         self.price = RailCar.price
 
 class PassengerCar(Car): # плацкартный вагон
-    price_units = 120
-    price = 1000
+    price_units = 54
+    price = .28 # цена 1 места за километр
 
     def __init__(self, train):
         super().__init__(train)
@@ -41,8 +41,8 @@ class PassengerCar(Car): # плацкартный вагон
         self.price = PassengerCar.price
 
 class CompartmentCar(Car): # купейный вагон
-    price_units = 30
-    price = 3000
+    price_units = 36
+    price = .6 # цена 1 места за километр
 
     def __init__(self, train):
         super().__init__(train)
