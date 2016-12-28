@@ -65,3 +65,13 @@ save_galaxy(mw, file)
 
 galaxy = load_galaxy(file)
 print(galaxy.number_of_planets)
+
+andromeda = Galaxy("Andromeda")
+andromeda.planet_add(Planet(name="Planet1", speed=30, galaxy=andromeda))
+andromeda.planet_add(Planet(name="Planet2", speed=40, galaxy=andromeda))
+print(andromeda.avg_speed)
+
+andr_file = "andr.pickle"
+save_galaxy(andromeda, andr_file)
+andromeda2 = load_galaxy(andr_file)
+print(andromeda2.avg_speed, andromeda2.list_of_planets)
