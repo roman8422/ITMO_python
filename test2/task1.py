@@ -1,3 +1,4 @@
+from save_restore import save_galaxy, load_galaxy
 
 class Galaxy:
 
@@ -57,3 +58,10 @@ uranus = Planet(name="Uranus", speed = 6.81)
 
 mw.planet_add(uranus)
 mw.planet_del(mars)
+
+file = 'gal.pickle'
+save_galaxy(mw, file)
+
+
+galaxy = load_galaxy(file)
+print(galaxy.number_of_planets)
