@@ -43,11 +43,11 @@ class Saper:
                             num_of_mines_around += 1
 
                     # Check mines on diagonales
-                    # # Top left corner
+                    # Top left corner
                     if x - 1 >= 0 and y - 1 >= 0:
                         if self.field[x - 1][y - 1][0] == "M":
                             num_of_mines_around += 1
-                    # # Bottom left corner
+                    # Bottom left corner
                     if x + 1 < self.field_size and y - 1 >= 0:
                         if self.field[x + 1][y - 1][0] == "M":
                             num_of_mines_around += 1
@@ -55,7 +55,7 @@ class Saper:
                     if x - 1 >= 0 and y + 1 < self.field_size:
                         if self.field[x - 1][y + 1][0] == "M":
                             num_of_mines_around += 1
-                    # # Bottom right corner
+                    # Bottom right corner
                     if x + 1 < self.field_size and y + 1 < self.field_size:
                         if self.field[x + 1][y + 1][0] == "M":
                             num_of_mines_around += 1
