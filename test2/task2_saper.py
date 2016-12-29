@@ -75,8 +75,8 @@ class Saper:
 
     def open_cell(self):
 
-        in_range = False
-        while not in_range:
+        in_field_area = False
+        while not in_field_area:
 
             good_coordinates = False
             while not good_coordinates:
@@ -89,7 +89,7 @@ class Saper:
 
             if x <= self.field_size - 1 and \
                 y <= self.field_size - 1:
-                in_range = True
+                in_field_area = True
             else:
                 print("Wrong coordinates. Both coordinates should be in range 0 to {} \n".format(self.field_size - 1))
 
