@@ -23,6 +23,47 @@ class Saper:
                     self.field[x][y][0] = 'M'
                     break
 
+        for x in range(self.field_size):
+            for y in range(self.field_size):
+                if self.field[x][y][0] != "M":
+                    num_of_mines_around = 0
+                    print(x,y)
+
+                    # Check mines on left and right
+                    if x - 1 >= 0:
+                        if self.field[x - 1][y][0] == 'M':
+                            num_of_mines_around += 1
+                    if x + 1 < self.field_size:
+                        if self.field[x + 1][y][0] == 'M':
+                            num_of_mines_around += 1
+                    if y - 1 >= 0:
+                        if self.field[x][y - 1][0] == 'M':
+                            print("!")
+                            num_of_mines_around += 1
+                    if y + 1 < self.field_size:
+                        if self.field[x][y + 1][0] == 'M':
+                            num_of_mines_around += 1
+
+                    # Check mines on diagonales
+                    # # Top left corner
+                    if x - 1 >= 0 and y - 1 >= 0:
+                        if self.field[x - 1][y - 1][0] == "M":
+                            num_of_mines_around += 1
+                    # # Bottom left corner
+                    if x + 1 < self.field_size and y - 1 >= 0:
+                        if self.field[x + 1][y - 1][0] == "M":
+                            num_of_mines_around += 1
+                    # Top right corner
+                    if x - 1 >= 0 and y + 1 < self.field_size:
+                        if self.field[x - 1][y + 1][0] == "M":
+                            num_of_mines_around += 1
+                    # # Bottom right corner
+                    if x + 1 < self.field_size and y + 1 < self.field_size:
+                        if self.field[x + 1][y + 1][0] == "M":
+                            num_of_mines_around += 1
+
+                    self.field[x][y][0] = num_of_mines_around
+
     def draw_field(self):
         print()
         count = 0
