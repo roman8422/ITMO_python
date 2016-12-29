@@ -65,13 +65,19 @@ class Saper:
     def draw_field(self, open_field = False):
         print()
         count = 0
+        y_coords = "  "
+        for y_coord in range(self.field_size):
+            y_coords += str(y_coord) + " "
+        print(y_coords)
         for x in range(self.field_size):
-            line = ""
+            line = str(x) + " "
             for y in range(self.field_size):
                 line += str(self.field[x][y][0]) if open_field or self.field[x][y][1] == 'open' else 'X'
                 line += " "
+            line += str(x)
 
             print(line)
+        print(y_coords)
 
     def open_cell(self):
 
