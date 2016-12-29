@@ -7,21 +7,21 @@ class Saper:
         self.field = []
         self.exploded = False
         self.covered_cells_left = True
+        self.first_move = True
         self.generate_field()
-        self.place_mines()
 
     def generate_field(self):
         for line in range(self.field_size):
             self.field.append([[0, 'closed'] for row in range(self.field_size)])
 
-    def place_mines(self):
+    def place_mines(self, exclude):
+        coordinates = [(x, y) for x in range(self.field_size)
+                              for y in range(self.field_size)]
+        coordinates.remove(exclude)
         for mine in range(self.number_of_mines):
-            while True:
-                x = randrange(self.field_size)
-                y = randrange(self.field_size)
-                if self.field[x][y][0] == 0:
-                    self.field[x][y][0] = 'M'
-                    break
+            mine_coords = coordinates[randrange(len(coordinates))]
+            self.field[mine_coords[0]][mine_coords[1]][0] = "M"
+            coordinates.remove((mine_coords))
 
         for x in range(self.field_size):
             for y in range(self.field_size):
@@ -93,6 +93,10 @@ class Saper:
             else:
                 print("Wrong coordinates. Both coordinates should be in range 0 to {} \n".format(self.field_size - 1))
 
+        if self.first_move:
+            self.first_move = False
+            self.place_mines(exclude = (x, y))
+
         if self.field[x][y][0] == 'M':
             self.exploded = True
 
@@ -123,6 +127,7 @@ class Saper:
                 break
 
 
-a = Saper(2, 0)
+# a = Saper(field_size=3, number_of_mines=8)
+a = Saper(field_size=3, number_of_mines=4)
 
 a.start_game()
