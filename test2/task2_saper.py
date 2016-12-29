@@ -20,7 +20,7 @@ class Saper:
                 x = randrange(self.field_size)
                 y = randrange(self.field_size)
                 if self.field[x][y][0] == 0:
-                    self.field[x][y][0] = 1
+                    self.field[x][y][0] = 'M'
                     break
 
     def draw_field(self):
@@ -54,7 +54,7 @@ class Saper:
             else:
                 print("Wrong coordinates. Both coordinates should be in range 0 to {} \n".format(self.field_size - 1))
 
-        if self.field[x][y][0] == 1:
+        if self.field[x][y][0] == 'M':
             self.exploded = True
 
         self.field[x][y][1] = "open"
