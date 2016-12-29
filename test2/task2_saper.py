@@ -61,17 +61,25 @@ class Saper:
 
     def check_field(self):
         self.cells_left = False
+        cells_open = 0
         for x in range(self.field_size):
             for y in range(self.field_size):
                 if self.field[x][y][1] == 'closed':
                     self.cells_left = True
-                    return True
+                    break
+                else:
+                    cells_open += 1
+
+        if cells_open == self.field_size ** 2 - self.number_of_mines:
+            self.cells_left = False
+
 
     def start_game(self):
+        self.draw_field()
         while True:
+            self.open_cell()
+            self.draw_field()
             if not self.exploded:
-                self.draw_field()
-                self.open_cell()
                 self.check_field()
 
                 if not self.cells_left:
