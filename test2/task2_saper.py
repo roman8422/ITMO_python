@@ -85,7 +85,7 @@ class Saper:
                     x, y = int(x), int(y)
                     good_coordinates = True
                 except Exception:
-                    print("Wrong numbers, try again(format 'x y'): \n")
+                    print("Wrong coordinates, try again(format 'x y'): \n")
 
             if x <= self.field_size - 1 and \
                 y <= self.field_size - 1:
