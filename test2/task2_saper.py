@@ -28,7 +28,7 @@ class Saper:
                 if self.field[x][y][0] != "M":
                     num_of_mines_around = 0
 
-                    # Check mines on left and right
+                    # Check mines on left, right, top and bottom
                     if x - 1 >= 0:
                         if self.field[x - 1][y][0] == 'M':
                             num_of_mines_around += 1
