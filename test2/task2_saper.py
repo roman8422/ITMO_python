@@ -6,7 +6,7 @@ class Saper:
         self.number_of_mines = number_of_mines
         self.field = []
         self.exploded = False
-        self.cells_left = True
+        self.covered_cells_left = True
         self.generate_field()
         self.place_mines()
 
@@ -99,11 +99,11 @@ class Saper:
         self.field[x][y][1] = "open"
 
     def check_field(self):
-        self.cells_left = False
+        self.covered_cells_left = False
         for x in range(self.field_size):
             for y in range(self.field_size):
                 if self.field[x][y][1] == 'closed' and self.field[x][y][0] != "M":
-                    self.cells_left = True
+                    self.covered_cells_left = True
                     break
 
     def start_game(self):
@@ -113,7 +113,7 @@ class Saper:
             if not self.exploded:
                 self.check_field()
 
-                if not self.cells_left:
+                if not self.covered_cells_left:
                     self.draw_field(open_field=True)
                     print("You've won!!!\nCongratz!")
                     break
