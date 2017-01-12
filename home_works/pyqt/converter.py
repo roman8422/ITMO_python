@@ -35,6 +35,9 @@ class CurrencyConverter(QMainWindow):
         self.convertBtn.clicked.connect(self.onClickConvertBtn)
         self.convertBtn.setDisabled(True) # Можно также сделать с setEnabled
 
+        self.srcAmount.valueChanged.connect(self.ValChanged)
+        self.resultAmount.valueChanged.connect(self.ValChanged)
+
     def initLayouts(self):
         self.w = QWidget()
 
@@ -52,6 +55,14 @@ class CurrencyConverter(QMainWindow):
 
         if value:
             self.resultAmount.setValue(value / Course().get())
+
+    def ValChanged(self):
+        if self.srcAmount.value() != 0 and self.resultAmount.value() == 0:
+            self.convertBtn.setEnabled(True)
+        elif self.srcAmount.value() == 0 and self.resultAmount.value() != 0:
+            self.convertBtn.setEnabled(True)
+        else:
+            self.convertBtn.setEnabled(False)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
