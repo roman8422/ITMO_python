@@ -17,6 +17,7 @@ class CurrencyConverter(QMainWindow):
         self.initUi()
         self.initLayouts()
         self.initSignals()
+        self.RUR_to_USD = True
 
     def initUi(self):
         self. setWindowTitle('Конвертер валют')
@@ -51,16 +52,20 @@ class CurrencyConverter(QMainWindow):
         self.setCentralWidget(self.w)
 
     def onClickConvertBtn(self):
-        value = self.srcAmount.value()
-
-        if value:
+        if self.RUR_to_USD:
+            value = self.srcAmount.value()
             self.resultAmount.setValue(value / Course().get())
+        else:
+            value = self.resultAmount.value()
+            self.srcAmount.setValue(value * Course().get())
 
     def ValChanged(self):
         if self.srcAmount.value() != 0 and self.resultAmount.value() == 0:
             self.convertBtn.setEnabled(True)
+            self.RUR_to_USD = True
         elif self.srcAmount.value() == 0 and self.resultAmount.value() != 0:
             self.convertBtn.setEnabled(True)
+            self.RUR_to_USD = False
         else:
             self.convertBtn.setEnabled(False)
 
