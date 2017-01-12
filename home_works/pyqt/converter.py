@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (
     QVBoxLayout
 )
 
+
 class Course(QObject):
     def get(self):
         return 59.50
@@ -20,7 +21,7 @@ class CurrencyConverter(QMainWindow):
         self.RUR_to_USD = True
 
     def initUi(self):
-        self. setWindowTitle('Конвертер валют')
+        self.setWindowTitle('Конвертер валют')
 
         self.srcLabel = QLabel('Сумма в рублях', self)
         self.resultLabel = QLabel('Сумма в долларах', self)
@@ -36,7 +37,7 @@ class CurrencyConverter(QMainWindow):
     def initSignals(self):
         self.convertBtn.clicked.connect(self.onClickConvertBtn)
         self.cleanBtn.clicked.connect(self.onClickCleanBtn)
-        self.convertBtn.setDisabled(True) # Можно также сделать с setEnabled
+        self.convertBtn.setDisabled(True)
 
         self.srcAmount.valueChanged.connect(self.ValChanged)
         self.resultAmount.valueChanged.connect(self.ValChanged)
@@ -75,6 +76,7 @@ class CurrencyConverter(QMainWindow):
             self.RUR_to_USD = False
         else:
             self.convertBtn.setEnabled(False)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
