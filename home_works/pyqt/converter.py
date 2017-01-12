@@ -31,9 +31,11 @@ class CurrencyConverter(QMainWindow):
         self.resultAmount.setMaximum(999999999)
 
         self.convertBtn = QPushButton('Перевести', self)
+        self.cleanBtn = QPushButton('Сбросить', self)
 
     def initSignals(self):
         self.convertBtn.clicked.connect(self.onClickConvertBtn)
+        self.cleanBtn.clicked.connect(self.onClickCleanBtn)
         self.convertBtn.setDisabled(True) # Можно также сделать с setEnabled
 
         self.srcAmount.valueChanged.connect(self.ValChanged)
@@ -48,6 +50,7 @@ class CurrencyConverter(QMainWindow):
         self.mainLayout.addWidget(self.resultLabel)
         self.mainLayout.addWidget(self.resultAmount)
         self.mainLayout.addWidget(self.convertBtn)
+        self.mainLayout.addWidget(self.cleanBtn)
 
         self.setCentralWidget(self.w)
 
@@ -58,6 +61,10 @@ class CurrencyConverter(QMainWindow):
         else:
             value = self.resultAmount.value()
             self.srcAmount.setValue(value * Course().get())
+
+    def onClickCleanBtn(self):
+        self.srcAmount.setValue(0)
+        self.resultAmount.setValue(0)
 
     def ValChanged(self):
         if self.srcAmount.value() != 0 and self.resultAmount.value() == 0:
