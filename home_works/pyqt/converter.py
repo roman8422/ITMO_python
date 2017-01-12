@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import (
 
 class Course(QObject):
     def get(self):
-        return 30.0
+        return 59.50
 
 
 class CurrencyConverter(QMainWindow):
