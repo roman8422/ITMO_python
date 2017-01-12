@@ -32,7 +32,7 @@ class CurrencyConverter(QMainWindow):
         self.convertBtn = QPushButton('Перевести', self)
 
     def initSignals(self):
-        self.convertBtn.clicked.connect(self.onClick)
+        self.convertBtn.clicked.connect(self.onClickConvertBtn)
         self.convertBtn.setDisabled(True) # Можно также сделать с setEnabled
 
     def initLayouts(self):
@@ -47,7 +47,7 @@ class CurrencyConverter(QMainWindow):
 
         self.setCentralWidget(self.w)
 
-    def onClick(self):
+    def onClickConvertBtn(self):
         value = self.srcAmount.value()
 
         if value:
