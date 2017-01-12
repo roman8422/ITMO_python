@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtCore import QObject
+from PyQt5.QtCore import QObject, Qt
+
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget,
     QLabel, QPushButton, QDoubleSpinBox,
@@ -41,6 +42,14 @@ class CurrencyConverter(QMainWindow):
 
         self.srcAmount.valueChanged.connect(self.ValChanged)
         self.resultAmount.valueChanged.connect(self.ValChanged)
+
+    def keyPressEvent(self, e):
+        if e.key() in [Qt.Key_Return, Qt.Key_Enter]:
+            if self.convertBtn.isEnabled():
+                self.convertBtn.click()
+
+        if e.key() in [Qt.Key_Escape]:
+            self.cleanBtn.click()
 
     def initLayouts(self):
         self.w = QWidget()
