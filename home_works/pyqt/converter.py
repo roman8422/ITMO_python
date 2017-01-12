@@ -43,14 +43,6 @@ class CurrencyConverter(QMainWindow):
         self.srcAmount.valueChanged.connect(self.ValChanged)
         self.resultAmount.valueChanged.connect(self.ValChanged)
 
-    def keyPressEvent(self, e):
-        if e.key() in [Qt.Key_Return, Qt.Key_Enter]:
-            if self.convertBtn.isEnabled():
-                self.convertBtn.click()
-
-        if e.key() in [Qt.Key_Escape]:
-            self.cleanBtn.click()
-
     def initLayouts(self):
         self.w = QWidget()
 
@@ -63,6 +55,14 @@ class CurrencyConverter(QMainWindow):
         self.mainLayout.addWidget(self.cleanBtn)
 
         self.setCentralWidget(self.w)
+
+    def keyPressEvent(self, e):
+        if e.key() in [Qt.Key_Return, Qt.Key_Enter]:
+            if self.convertBtn.isEnabled():
+                self.convertBtn.click()
+
+        if e.key() in [Qt.Key_Escape]:
+            self.cleanBtn.click()
 
     def onClickConvertBtn(self):
         if self.RUR_to_USD:
