@@ -36,9 +36,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.disable_controls()
 
     def init_signals(self):
-        self.loginWidget.buttonBox.accepted.connect(self.yes)
+        self.loginWidget.buttonBox.accepted.connect(self.onLoginOk)
+        self.loginWidget.buttonBox.rejected.connect(self.onLoginCancel)
+        self.loginWidget.loginField.returnPressed.connect(self.onLoginLoginEnter)
+        self.loginWidget.pwField.returnPressed.connect(self.onLoginPwEnter)
 
-    def yes(self):
+    def onLoginOk(self):
         username_entered = self.loginWidget.loginField.text()
         password_entered = self.loginWidget.pwField.text()
         if username_entered in self.creds:
@@ -50,6 +53,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.wrong_auth()
         else:
             self.wrong_auth()
+
+    def onLoginCancel(self):
+        self.close()
+
+    def onLoginLoginEnter(self):
+        self.onLoginOk()
+
+    def onLoginPwEnter(self):
+        self.onLoginOk()
 
     def disable_controls(self):
         self.toolBar.setEnabled(False)
