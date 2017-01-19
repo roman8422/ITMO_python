@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QMessageBox
 from .ui.Ui_LoginDialog import Ui_loginDialog
 
 
@@ -26,6 +26,8 @@ class LoginWidget(QWidget, Ui_loginDialog):
         else:
             self.loginField.setText('')
             self.pwField.setText('')
+
+            QMessageBox.critical(self, 'Authentication error', 'Wrong username or password\nTry again')
 
     def reject(self):
         pass
